@@ -34,12 +34,12 @@ function [yl,yh,ts,t] = M3ParameterID_001_23(time, temp, type)
 % every elements, on the start and the end that the element is not enough
 % for 2 left and 2 right, use as many as possible.
 for i = 1:length
-    if i < 3
+    if i < 5
         temp(i) = mean(temp(1:(2 * i - 1)));
-    elseif i > (length - 2)
+    elseif i > (length - 4)
         temp(i) = mean(temp((length - 2 * (length - i)):length));
     else
-        temp(i) = mean(temp((i - 2):(i + 2)));
+        temp(i) = mean(temp((i - 4):(i + 4)));
     end
 end
 
@@ -91,28 +91,34 @@ start_i = 1;
 step = floor(0.01 * length); % set the step to 1% of the data
 % loop thorough half of the data (assume time start before half of the
 % data) find the slope, assume the change is fastest at ts
-while start_i <= floor(0.5 * length) 
+while start_i <= floor(0.9*length) 
     array_temp = temp(start_i:(start_i + step));
     array_time = time(start_i:(start_i + step));
     p = polyfit(array_time,array_temp,1);
     slope(start_i) = p(1);
     start_i = start_i + 1;  %change the index here to make the program faster
 end
-ts_i = (abs(slope) == max(abs(slope))); %find the largest slope index
+if type == 'cooling'
+    ts_i = find((slope) == min(slope)); %find the largest slope index
+else
+    ts_i = find((slope) == max(slope));
+end
 ts = time(ts_i);    %time start (s)
 
 % Find tau
 % Generate tau function based on the type
+% Generate a time array from start to end
+start_time = time(ts_i:floor(ts_i + 0.3 * length));
+start_temp = temp(ts_i:floor(ts_i + 0.3 * length));
 if type == 'cooling'
     yt = yh - 0.632 * (yh - yl);
 else
     yt = yl + 0.632 * (yh - yl);
 end
-diff = abs(temp - yt);  %calculate the distance between temp and yt
+diff = abs(start_temp - yt);  %calculate the distance between temp and yt
 [~, sortIDX] = sort(diff);  %sort the diff from low to high
-time = time(sortIDX);   %sort the time based on diff array
-t = mean(time(1:50)) - ts;  %estimate tau by the average of 50 times that is closest to tau
-
+start_time = start_time(sortIDX);   %sort the time based on diff array
+t = start_time(1) - ts;  %estimate tau by the average of 50 times that is closest to tau
 
 %% ACADEMIC INTEGRITY STATEMENT
 % I/We have not used source code obtained from any other unauthorized
