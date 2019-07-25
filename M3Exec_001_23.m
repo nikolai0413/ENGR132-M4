@@ -1,11 +1,11 @@
-function M2Exec_001_23
+function M3Exec_001_23
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
 % Loads data, distinguishes between heating and cooling, Calls UDFs
 %
 % Function Call
-% M2Exec_001_23
+% M3Exec_001_23
 %
 % Input Arguments
 % None
@@ -28,29 +28,11 @@ function M2Exec_001_23
 coolNoisy = load("M4_Data_CoolingTimeHistory.csv");
 heatNoisy = load("M4_Data_HeatingTimeHistory.csv");
 
+cnType = "cooling";
+hnType = "heating";
+
 %% ____________________
 %% CALCULATIONS & FORMATTED TEXT & FIGURE DISPLAYS
-
-
-% calculate heating or cooling types for each dataset
-
-cnType = mean(coolNoisy(1:10, 2)) > ...
-  mean(coolNoisy((length(coolNoisy) - 10) : length(coolNoisy), 2));
-if (cnType)
-  cnType = 'cooling';
-else
-  cnType = 'heating';
-end
-
-hnType = mean(heatNoisy(1:10, 2)) > ...
-  mean(heatNoisy((length(heatNoisy) - 10) : length(heatNoisy), 2));
-if (hnType)
-  hnType = "cooling";
-else
-  hnType = "heating";
-end
-
-
 
 % get parameters for each dataset
 [cn_yl, cn_yh, cn_ts, cn_tau] = M3ParameterID_001_23(coolNoisy(:,1), coolNoisy(:,2), cnType);
