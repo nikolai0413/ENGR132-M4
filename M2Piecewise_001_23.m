@@ -6,7 +6,7 @@ function modeledValues = M2Piecewise_001_23(t, responseType, ts, yl, yh, tau)
 % using a piecewise equation
 %
 % Function Call
-% modeledValues = M2Piecewise_001_23(t, type, ts, yl, yh, tau);
+% modeledValues = M2Piecewise_001_23(t, responseType, ts, yl, yh, tau);
 %
 % Input Arguments
 % t, a vector containing the time values to be modeled, seconds
@@ -14,16 +14,17 @@ function modeledValues = M2Piecewise_001_23(t, responseType, ts, yl, yh, tau)
 % ts, the parameter ts, seconds
 % yl, the "y low" parameter, Celcius
 % yh, the "y high" parameter, Celcius
-% tau, the tau parameter
+% tau, the tau parameter, seconds
 %
 % Output Arguments
 % modeledValues, a vector containing the modeled values of temperature according to the equation
 %
 % Assignment Information
-%   Assignment:       	M1
+%   Assignment:       	M3
 %   Author:             Nicolas Fransen, nfransen@purdue.edu
-%   Team ID:            001-23      
-%  	Contributor: 		    None
+%                       Zhibo Hou, hou70@purdue.edu
+%                       Charlie Wu, wu1292@purdue.edu
+%   Team ID:            001-23
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ____________________

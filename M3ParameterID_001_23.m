@@ -19,11 +19,11 @@ function [yl,yh,ts,t] = M3ParameterID_001_23(time, temp, type)
 % t  (the time constant for the system (s))
 %
 % Assignment Information
-%   Assignment:       	PS ##, Problem #
-%   Author:             Name, login@purdue.edu
-%   Team ID:            ###-##      
-%  	Contributor: 		Name, login@purdue [repeat for each]
-% did you complete the assignment information? delete this line if yes
+%   Assignment:       	M3
+%   Author:             Zhibo Hou, hou70@purdue.edu
+%                       Charlie Wu, wu1292@purdue.edu
+%                       Nicolas Fransen, nfransen@purdue.edu
+%   Team ID:            001-23
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ____________________
 %% INITIALIZATION 
