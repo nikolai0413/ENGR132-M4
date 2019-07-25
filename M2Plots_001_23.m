@@ -24,18 +24,23 @@ function M2Plots_001_23(coolNoisy, heatNoisy, cn_model, hn_model)
 %% ____________________
 %% INITIALIZATION 
 figure;
-sgtitle("Parameter Values Plotted with Calibration Data")
+sgtitle("Generated Models Plotted with Calibration Data")
 
 subplot(2,1,1)
-plot(heatNoisy(:,1), heatNoisy(:,2), 'ro', heatNoisy(:,1), hn_model, 'k')
-title('Noisy Heating')
+plot(heatNoisy(:,1), heatNoisy(:,2), 'ro')
+hold on
+plot(heatNoisy(:,1), hn_model, 'k', 'LineWidth', 2)
+hold off
+title('M4 Heating Time History')
 xlabel('Time (s)')
 ylabel('Temperature (C)')
 grid on
 
 subplot(2,1,2)
-plot(coolNoisy(:,1), coolNoisy(:,2), 'bo', coolNoisy(:,1), cn_model, 'c')
-title('Noisy Heating')
+plot(coolNoisy(:,1), coolNoisy(:,2), 'bo')
+hold on
+plot(coolNoisy(:,1), cn_model, 'c', 'LineWidth', 2)
+title('M4 Cooling Time History')
 xlabel('Time (s)')
 ylabel('Temperature (C)')
 grid on
