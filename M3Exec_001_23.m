@@ -2,7 +2,12 @@ function M3Exec_001_23
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
-% Loads data, distinguishes between heating and cooling, Calls UDFs
+% Loads heating and cooling data relevant to Milestone 4. Calls slightly
+%     modified Parameter ID function from Milestone 3 to obtain the 
+%     parameters for each time history. Calls the piecewise function from 
+%     Milestone 2 to model each dataset based on the parameters. Finally calls
+%     Plot and SSE functions from Milestone 2 to display the results of the
+%     regression.
 %
 % Function Call
 % M3Exec_001_23
